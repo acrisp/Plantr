@@ -1,0 +1,104 @@
+<html>
+<head>
+   <title>Add a Soul</title>
+   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css" rel="stylesheet">
+   <link href="/stylesheets/style.css" rel="stylesheet">
+
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+   <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+   <script src="http://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.18/angular-ui-router.js"></script>
+   <script src="/javascripts/angularApp.js"></script>
+
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body ng-app="plantr" ng-controller="FormCtrl">
+   <div class="container">
+       <div class="col-sm-8 col-sm-offset-2">
+           <!-- PAGE HEADER -->
+           <div class="page-header">
+               <h1>
+                   Add a Soul <i class="fa fa-leaf" style="color: green;" aria-hidden="true"></i>
+               </h1>
+           </div>
+           <form name="soulForm" ng-submit="submitForm(soulForm.$valid)" novalidate> <!-- novalidate prevents HTML5 validation since we will be validating ourselves -->
+               <!-- FIRST NAME -->
+               <div class="form-group" ng-class="{ 'has-error' : soulForm.fname.$invalid && !soulForm.fname.$pristine }">
+                   <label>First Name</label>
+                   <input type="text" name="fname" class="form-control" ng-model="fname" required>
+                   <p ng-show="soulForm.fname.$invalid && !soulForm.fname.$pristine" class="help-block">A first name is required.</p>
+               </div>
+
+               <!-- LAST NAME -->
+               <div class="form-group" ng-class="{ 'has-error' : soulForm.lname.$invalid && !soulForm.lname.$pristine }">
+                   <label>Last Name</label>
+                   <input type="text" name="lname" class="form-control" ng-model="lname" required>
+                   <p ng-show="soulForm.lname.$invalid && !soulForm.lname.$pristine" class="help-block">A last name is required.</p>
+               </div>
+
+               <!-- STREET -->
+               <div class="form-group" ng-class="{ 'has-error' : soulForm.street.$invalid && !soulForm.street.$pristine }">
+                   <label>Street</label>
+                   <input type="text" name="street" class="form-control" ng-model="street" required>
+                   <p ng-show="soulForm.street.$invalid && !soulForm.street.$pristine" class="help-block">A street is required.</p>
+               </div>
+
+               <!-- CITY -->
+               <div class="form-group" ng-class="{ 'has-error' : soulForm.city.$invalid && !soulForm.city.$pristine }">
+                   <label>City</label>
+                   <input type="text" name="city" class="form-control" ng-model="city" required>
+                   <p ng-show="soulForm.city.$invalid && !soulForm.city.$pristine" class="help-block">A city is required.</p>
+               </div>
+
+               <!-- STATE -->
+               <div class="form-group">
+                   <label>State</label>
+                   <input type="text" name="state" class="form-control" ng-model="state" required>
+                   <p ng-show="soulForm.state.$invalid && !soulForm.state.$pristine" class="help-block">A state is required.</p>
+               </div>
+
+               <!-- ZIP -->
+               <div class="form-group" ng-class="{ 'has-error' : soulForm.zip.$invalid && !soulForm.zip.$pristine }">
+                   <label>Zip</label>
+                   <input type="number" name="zip" class="form-control" ng-model="zip" required>
+                   <p ng-show="soulForm.zip.$invalid && !soulForm.zip.$pristine" class="help-block">A zip code is required.</p>
+               </div>
+
+               <!-- DATE CONTACTED -->
+               <div class="form-group">
+                   <label>Contacted</label>
+                   <input type="date" name="contacted" class="form-control" ng-model="contacted" required>
+               </div>
+
+               <!-- CURRENT LESSON -->
+               <div class="form-group">
+                   <label>Lesson</label>
+                   <input type="text" name="lesson" class="form-control" ng-model="lesson" required>
+               </div>
+
+               <!-- LAST LESSON SENT -->
+               <div class="form-group">
+                   <label>Lesson Sent</label>
+                   <input type="date" name="sent" class="form-control" ng-model="sent" required>
+               </div>
+
+               <!-- LAST LESSON RECEIVED -->
+               <div class="form-group">
+                   <label>Lesson Received</label>
+                   <input type="date" name="received" class="form-control" ng-model="received" required>
+               </div>
+
+               <!-- COMMENTS -->
+               <div class="form-group">
+                   <label>Comments</label>
+                   <input type="text" name="comments" class="form-control" ng-model="comments" required>
+               </div>
+
+               <!-- SUBMIT BUTTON -->
+               <button type="submit" class="btn btn-primary" ng-disabled="soulForm.$invalid">Submit</button>
+           </form>
+       </div>
+   </div>
+</body>
+</html>
