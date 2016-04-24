@@ -14,8 +14,37 @@
    <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body ng-app="plantr" ng-controller="FormCtrl">
+  <header class="small_header">
+
+  </header><!-- End of header -->
+  <div class="navbar navbar-custom navbar-inverse navbar-static-top" id="nav">
+      <div class="container">
+          <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+              </button>
+          </div>
+          <div class="collapse navbar-collapse">
+              <ul class="nav navbar-nav nav-justified">
+                  <li><a href="/">Home</a></li>
+                  <li><a href="#">Schedule</a></li>
+                  <li><a href="#">Statistics</a></li>
+                  <li><a href="#">Courses</a></li>
+                  <li class="dropdown">
+                      <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">Souls <b class="caret"></b></a>
+                      <ul class="dropdown-menu">
+                          <li><a href="/addSoul">Add a Soul</a></li>
+                          <li><a href="#">Find a Soul</a></li>
+                      </ul>
+                  </li>
+              </ul>
+          </div><!-- /.nav-collapse -->
+      </div><!-- /.container -->
+  </div><!-- /.navbar -->
    <div class="container">
-       <div class="col-sm-8 col-sm-offset-2">
+       <div class="col-sm-10 col-sm-offset-1">
            <!-- PAGE HEADER -->
            <div class="page-header">
                <h1>
@@ -23,82 +52,134 @@
                </h1>
            </div>
            <form name="soulForm" ng-submit="submitForm(soulForm.$valid)" novalidate> <!-- novalidate prevents HTML5 validation since we will be validating ourselves -->
-               <!-- FIRST NAME -->
-               <div class="form-group" ng-class="{ 'has-error' : soulForm.fname.$invalid && !soulForm.fname.$pristine }">
-                   <label>First Name</label>
-                   <input type="text" name="fname" class="form-control" ng-model="fname" required>
-                   <p ng-show="soulForm.fname.$invalid && !soulForm.fname.$pristine" class="help-block">A first name is required.</p>
+               <div class="row">
+                   <h3 style="font-family: 'Ubuntu', sans-serif; padding-left: 50px;">Name</h3>
+                   <div class="col-md-5 col-sm-5 col-xs-10 col-xs-offset-1 col-sm-offset-1 col-md-offset-1">
+                       <!-- FIRST NAME -->
+                       <div class="form-group" ng-class="{ 'has-error' : soulForm.fname.$invalid && !soulForm.fname.$pristine }">
+                           <!--<label>First Name</label>-->
+                           <input type="text" name="fname" placeholder="First Name" class="form-control" ng-model="fname" required>
+                           <p ng-show="soulForm.fname.$invalid && !soulForm.fname.$pristine" class="help-block">A first name is required.</p>
+                       </div>
+                   </div>
+                   <div class="col-md-5 col-sm-5 col-xs-10 col-xs-offset-1 col-sm-offset-1 col-md-offset-1">
+                       <!-- LAST NAME -->
+                       <div class="form-group" ng-class="{ 'has-error' : soulForm.lname.$invalid && !soulForm.lname.$pristine }">
+                           <input type="text" name="lname" placeholder="Last Name" class="form-control" ng-model="lname" required>
+                           <p ng-show="soulForm.lname.$invalid && !soulForm.lname.$pristine" class="help-block">A last name is required.</p>
+                       </div>
+                   </div>
+               </div><!-- End of Row -->
+               <div class="row">
+                   <h3 style="font-faimly: 'Ubuntu', sans-serif; padding-left: 50px;">Address</h3>
+                   <div class="col-md-8 col-sm-8 col-xs-10 col-xs-offset-1 col-sm-offset-1 col-md-offset-1">
+                       <!-- STREET -->
+                       <div class="form-group" ng-class="{ 'has-error' : soulForm.street.$invalid && !soulForm.street.$pristine }">
+                           <input type="text" name="street" placeholder="Street" class="form-control" ng-model="street" required>
+                           <p ng-show="soulForm.street.$invalid && !soulForm.street.$pristine" class="help-block">A street is required.</p>
+                       </div>
+                   </div>
+               </div><!-- End of Row -->
+               <div class="row">
+                   <div class="col-md-4 col-sm-4 col-xs-6 col-xs-offset-1 col-sm-offset-1 col-md-offset-1">
+                       <!-- CITY -->
+                       <div class="form-group" ng-class="{ 'has-error' : soulForm.city.$invalid && !soulForm.city.$pristine }">
+                           <input type="text" name="city" placeholder="City" class="form-control" ng-model="city" required>
+                           <p ng-show="soulForm.city.$invalid && !soulForm.city.$pristine" class="help-block">A city is required.</p>
+                       </div>
+                   </div>
+                   <div class="col-md-3 col-sm-3 col-xs-4 col-sm-offset-1 col-md-offset-1">
+                       <!-- ZIP -->
+                       <div class="form-group" ng-class="{ 'has-error' : soulForm.zip.$invalid && !soulForm.zip.$pristine }">
+                           <input type="text" name="zip" placeholder="Zip Code" class="form-control" ng-model="zip" required>
+                           <p ng-show="soulForm.zip.$invalid && !soulForm.zip.$pristine" class="help-block">A zip code is required.</p>
+                       </div>
+                   </div>
                </div>
-
-               <!-- LAST NAME -->
-               <div class="form-group" ng-class="{ 'has-error' : soulForm.lname.$invalid && !soulForm.lname.$pristine }">
-                   <label>Last Name</label>
-                   <input type="text" name="lname" class="form-control" ng-model="lname" required>
-                   <p ng-show="soulForm.lname.$invalid && !soulForm.lname.$pristine" class="help-block">A last name is required.</p>
+               <div class="row">
+                   <div class="col-md-2 col-sm-3 col-xs-3 col-md-offset-1 col-sm-offset-1 col-xs-offset-1">
+                       <!-- STATE -->
+                       <div class="form-group">
+                           <select name="state" style="height: 35px; border-radius: 5px; border-color: #bbbbbb;">
+                               <option value="--">Select State</option>
+                               <option value="AL">Alabama</option>
+                               <option value="AK">Alaska</option>
+                               <option value="AZ">Arizona</option>
+                               <option value="AR">Arkansas</option>
+                               <option value="CA">California</option>
+                               <option value="CO">Colorado</option>
+                               <option value="CT">Connecticut</option>
+                               <option value="DE">Delaware</option>
+                               <option value="DC">District of Columbia</option>
+                               <option value="FL">Florida</option>
+                               <option value="GA">Georgia</option>
+                               <option value="HI">Hawaii</option>
+                               <option value="ID">Idaho</option>
+                               <option value="IL">Illinois</option>
+                               <option value="IN">Indiana</option>
+                               <option value="IA">Iowa</option>
+                               <option value="KS">Kansas</option>
+                               <option value="KY">Kentucky</option>
+                               <option value="LA">Louisiana</option>
+                               <option value="ME">Maine</option>
+                               <option value="MD">Maryland</option>
+                               <option value="MA">Massachusetts</option>
+                               <option value="MI">Michigan</option>
+                               <option value="MN">Minnesota</option>
+                               <option value="MS">Mississippi</option>
+                               <option value="MO">Missouri</option>
+                               <option value="MT">Montana</option>
+                               <option value="NE">Nebraska</option>
+                               <option value="NV">Nevada</option>
+                               <option value="NH">New Hampshire</option>
+                               <option value="NJ">New Jersey</option>
+                               <option value="NM">New Mexico</option>
+                               <option value="NY">New York</option>
+                               <option value="NC">North Carolina</option>
+                               <option value="ND">North Dakota</option>
+                               <option value="OH">Ohio</option>
+                               <option value="OK">Oklahoma</option>
+                               <option value="OR">Oregon</option>
+                               <option value="PA">Pennsylvania</option>
+                               <option value="RI">Rhode Island</option>
+                               <option value="SC">South Carolina</option>
+                               <option value="SD">South Dakota</option>
+                               <option value="TN">Tennessee</option>
+                               <option value="TX">Texas</option>
+                               <option value="UT">Utah</option>
+                               <option value="VT">Vermont</option>
+                               <option value="VA">Virgina</option>
+                               <option value="WA">Washington</option>
+                               <option value="WV">West Virginia</option>
+                               <option value="WI">Wisconsin</option>
+                               <option value="WY">Wyoming</option>
+                           </select>
+                           <p ng-show="soulForm.state.$invalid && !soulForm.state.$pristine" class="help-block">A state is required.</p>
+                       </div>
+                   </div>
+               </div> <!-- End of Row -->
+               <div class="row">
+                   <h3 style="font-family: 'Ubuntu', sans-serif; padding-left: 50px;">Additional Details</h3>
+                   <div class="col-md-5 col-sm-5 col-xs-10 col-md-offset-1 col-sm-offset-1 col-xs-offset-1">
+                       <!-- DATE CONTACTED -->
+                       <div class="form-group">
+                           <label>Date Contacted</label>
+                           <input type="date" name="contacted" class="form-control" style="color: #bbbbbb;" ng-model="contacted" required>
+                       </div>
+                   </div>
                </div>
-
-               <!-- STREET -->
-               <div class="form-group" ng-class="{ 'has-error' : soulForm.street.$invalid && !soulForm.street.$pristine }">
-                   <label>Street</label>
-                   <input type="text" name="street" class="form-control" ng-model="street" required>
-                   <p ng-show="soulForm.street.$invalid && !soulForm.street.$pristine" class="help-block">A street is required.</p>
-               </div>
-
-               <!-- CITY -->
-               <div class="form-group" ng-class="{ 'has-error' : soulForm.city.$invalid && !soulForm.city.$pristine }">
-                   <label>City</label>
-                   <input type="text" name="city" class="form-control" ng-model="city" required>
-                   <p ng-show="soulForm.city.$invalid && !soulForm.city.$pristine" class="help-block">A city is required.</p>
-               </div>
-
-               <!-- STATE -->
-               <div class="form-group">
-                   <label>State</label>
-                   <input type="text" name="state" class="form-control" ng-model="state" required>
-                   <p ng-show="soulForm.state.$invalid && !soulForm.state.$pristine" class="help-block">A state is required.</p>
-               </div>
-
-               <!-- ZIP -->
-               <div class="form-group" ng-class="{ 'has-error' : soulForm.zip.$invalid && !soulForm.zip.$pristine }">
-                   <label>Zip</label>
-                   <input type="number" name="zip" class="form-control" ng-model="zip" required>
-                   <p ng-show="soulForm.zip.$invalid && !soulForm.zip.$pristine" class="help-block">A zip code is required.</p>
-               </div>
-
-               <!-- DATE CONTACTED -->
-               <div class="form-group">
-                   <label>Contacted</label>
-                   <input type="date" name="contacted" class="form-control" ng-model="contacted" required>
-               </div>
-
-               <!-- CURRENT LESSON -->
-               <div class="form-group">
-                   <label>Lesson</label>
-                   <input type="text" name="lesson" class="form-control" ng-model="lesson" required>
-               </div>
-
-               <!-- LAST LESSON SENT -->
-               <div class="form-group">
-                   <label>Lesson Sent</label>
-                   <input type="date" name="sent" class="form-control" ng-model="sent" required>
-               </div>
-
-               <!-- LAST LESSON RECEIVED -->
-               <div class="form-group">
-                   <label>Lesson Received</label>
-                   <input type="date" name="received" class="form-control" ng-model="received" required>
-               </div>
-
+               <div class="row">
                <!-- COMMENTS -->
-               <div class="form-group">
-                   <label>Comments</label>
-                   <input type="text" name="comments" class="form-control" ng-model="comments" required>
+                   <div class="form-group col-md-5 col-sm-5 col-xs-10 col-md-offset-1 col-sm-offset-1 col-xs-offset-1">
+                       <textarea name="comments" form="soulForm" placeholder="Comments" ng-model="comments" rows="4" cols="35" style="border-radius: 5px; border-color: #bbbbbb;"></textarea>
+                   </div>
                </div>
 
                <!-- SUBMIT BUTTON -->
                <button type="submit" class="btn btn-primary" ng-disabled="soulForm.$invalid">Submit</button>
            </form>
        </div>
+       <script src="/javascripts/navbar.js"></script>
    </div>
 </body>
 </html>

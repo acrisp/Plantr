@@ -82,18 +82,18 @@
         </div><!-- /.navbar -->
 
         <ui-view></ui-view><!-- Render Main View -->
-
+        <script src="/javascripts/navbar.js"></script>
   <!-- Footer -->
 
   <!-- End of Footer -->
-  <script src="/javascripts/navbar.js"></script>
+
     <!-- Home Template -->
     <script type="text/ng-template" id="/home.html">
         <div class="introBox-bg">
             <div class="container-fluid">
                 <div class="row" style="min-height: 400px;">
                     <div class="col-xs-12 col-md-8 col-md-offset-2">
-                        <p style="font-family: 'Righteous', cursive; font-size: 40pt; text-align: center;"><strong>
+                        <p style="font-family: 'Righteous', cursive; font-size: 40pt; text-align: center; padding-top: 30px;"><strong>
                             <span style="color:#ff6050; font-size: 70pt;">Go</span> into all the world and <span style="color:#ff6050; font-size: 70pt;">preach </span>the gospel to all creation</strong>
                         </p>
                     </div>
@@ -201,6 +201,12 @@
         <ul class="nav pull-right scroll-top">
             <li><a href="#" title="Scroll to top"><i class="glyphicon glyphicon-chevron-up"></i></a></li>
         </ul>
+        <!-- Smooth Scroll for scroll to top -->
+        <script>
+        $('.scroll-top').click(function(){
+          $('body,html').animate({scrollTop:0},1000);
+        })
+        </script>
     </script>
     <!-- End of Home Template -->
 
