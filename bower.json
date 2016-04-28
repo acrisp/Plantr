@@ -1,0 +1,21 @@
+{
+  "name": "plantr",
+  "description": "",
+  "main": "",
+  "authors": [
+    "Andrew <acrisp013@gmail.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/Fractured/Plantr",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#^1.4.0"
+  }
+}

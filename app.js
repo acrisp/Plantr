@@ -23,7 +23,7 @@ var routes = require('./routes/index');
 var users = require('./routes/users');
 
 
-
+app.use(express.static(path.join(__dirname, './views/templates')));
 
 
 // uncomment after placing your favicon in /public

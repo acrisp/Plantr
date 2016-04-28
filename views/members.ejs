@@ -1,0 +1,102 @@
+<html>
+
+<head>
+    <title>Plantr</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/hover.css/2.0.2/css/hover-min.css" rel="stylesheet">
+    <link href="/stylesheets/style.css" rel="stylesheet">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.18/angular-ui-router.js"></script>
+    <script src="/javascripts/angularApp.js"></script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Tempates -->
+     <script type="text/ng-template" id="/soulList.ejs"></script>
+     <script type="text/ng-template" id="/addSoul.ejs"></script>
+     <!-- <script type="text/ng-template" id="/templates/posts.ejs"></script> -->
+
+</head>
+
+<body ng-app="plantr" ng-controller="MainCtrl">
+   <header class="small_header">
+
+   </header><!-- End of header -->
+   <div class="navbar navbar-custom navbar-inverse navbar-static-top" id="nav">
+       <div class="container">
+           <div class="navbar-header">
+               <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                   <span class="icon-bar"></span>
+                   <span class="icon-bar"></span>
+                   <span class="icon-bar"></span>
+               </button>
+           </div>
+           <div class="collapse navbar-collapse">
+               <ul class="nav navbar-nav pull-right">
+                   <li class="dropdown">
+                       <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user" style="font-size: 18pt;" aria-hidden="true"></i><i class="fa fa-chevron-down" style=" padding-left: 10px; font-size: 18pt;" aria-hidden="true"></i></a>
+                       <ul class="dropdown-menu">
+                           <li><a href="#"><strong>Profile</strong></a></li>
+                           <li><a href="#"><strong>Log Out</strong></a></li>
+                       </ul>
+                   </li>
+               </ul>
+           </div><!-- /.nav-collapse -->
+       </div><!-- /.container -->
+   </div><!-- /.navbar -->
+   <ui-view></ui-view>
+   <script src="/javascripts/navbar.js"></script>
+
+   <!-- Default Template -->
+   <script type="text/ng-template" id="/members.html">
+       <div class="container">
+           <div class="row" style="padding-bottom: 80px;">
+               <div class="col-md-10 col-md-offset-1 text-center">
+                   <p style="font-family: 'Ubuntu', sans-serif; font-size: 3em; padding-top: 40px;">Welcome Back, Andrew</p>
+               </div>
+           </div><!-- End of Row -->
+           <div class="row">
+               <div class="col-md-10 col-md-offset-1">
+                   <div class="col-md-4">
+                       <a class="memberMenu animated fadeInUp hvr-float-shadow" style="color: white; text-decoration: none;" href="#/soulList"><span class="glyphicon glyphicon-search" style="text-align: center; line-height: 90px;"</span></a>
+                       <p class="text-center" style="padding-top: 20px; font-family: 'Ubuntu', sans-serif; font-size: 18pt;">Find a Soul</p>
+                   </div>
+                   <div class="col-md-4">
+                       <a class="memberMenu animated fadeInUp hvr-float-shadow" style="color: white; text-decoration: none;" href="#/addSoul"><span class="fa fa-user-plus" style="text-align: center; line-height: 90px;"</span></a>
+                       <p class="text-center" style="padding-top: 20px; font-family: 'Ubuntu', sans-serif; font-size: 18pt;">Add a Soul</p>
+                   </div>
+                   <div class="col-md-4">
+                       <a class="memberMenu animated fadeInUp hvr-float-shadow" style="color: white; text-decoration: none;" href="#"><span class="fa fa-calendar" style="text-align: center; line-height: 90px;"</span></a>
+                       <p class="text-center" style="padding-top: 20px; font-family: 'Ubuntu', sans-serif; font-size: 18pt;">Schedule</p>
+                   </div>
+               </div>
+           </div><!--End of Row-->
+           <div class="row" style="padding-top: 80px;">
+               <div class="col-md-10 col-md-offset-1">
+                   <div class="col-md-4">
+                       <a class="memberMenu animated fadeInUp hvr-float-shadow" style="color: white; text-decoration: none;" href="#"><span class="fa fa-bar-chart" style="text-align: center; line-height: 90px;"</span></a>
+                       <p class="text-center" style="padding-top: 20px; font-family: 'Ubuntu', sans-serif; font-size: 18pt;">Statistics</p>
+                   </div>
+                   <div class="col-md-4">
+                       <a class="memberMenu animated fadeInUp hvr-float-shadow" style="color: white; text-decoration: none;" href="#/addSoul"><span class="fa fa-map-marker" style="text-align: center; line-height: 90px;"</span></a>
+                       <p class="text-center" style="padding-top: 20px; font-family: 'Ubuntu', sans-serif; font-size: 18pt;">Map</p>
+                   </div>
+                   <div class="col-md-4">
+                       <a class="memberMenu animated fadeInUp hvr-float-shadow" style="color: white; text-decoration: none;" href="#"><span class="fa fa-graduation-cap" style="text-align: center; line-height: 90px;"</span></a>
+                       <p class="text-center" style="padding-top: 20px; font-family: 'Ubuntu', sans-serif; font-size: 18pt;">Courses</p>
+                   </div>
+               </div>
+           </div><!--End of Row-->
+       </div>
+   </script>
+
+
+   <!-- addSoul Template
+   <script type="text/ng-template" id="/addSoul.html">
+
+   </script>-->
+</body>

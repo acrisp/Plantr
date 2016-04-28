@@ -1,11 +1,31 @@
 var app = angular.module('plantr', ['ui.router']);
 
-app.factory('posts', [function(){
+app.factory('souls', ['$http', function($http){
   var o = {
-    posts: []
+    souls: []
   };
+
+  o.getAll = function() {
+    return $http.get('/soulList').success(function(data){
+      angular.copy(data, o.souls);
+    });
+  };
+
+  o.get = function (id) {
+    return $http.get('soulList/' + id)
+      .then(function(res) {
+        return res.data;
+      });
+  };
+
+  o.create = function(soul) {
+    return $http.post('/soulList', soul).success(function(data){
+      o.souls.push(data);
+    });
+  };
+
   return o;
-}])
+}]);
 
 app.config([
   '$stateProvider',
@@ -13,75 +33,80 @@ app.config([
   function($stateProvider, $urlRouterProvider){
 
     $stateProvider
-      .state('home', {
-        url: '/home',
-        templateUrl: '/home.html',
+      .state('members', {
+        url: '/members',
+        templateUrl: '/members.html',
         controller: 'MainCtrl'
       })
 
-      .state('posts', {
-        url: '/posts/{id}',
-        templateUrl: '/posts.html',
-        controller: 'PostsCtrl'
+      .state('addSoul', {
+        url: '/addSoul',
+        templateUrl: '/addSoul.ejs',
+        controller: 'MainCtrl'
       })
 
-     $urlRouterProvider.otherwise('home');
+      .state('soulList', {
+        url: '/soulList',
+        templateUrl: '/soulList.ejs',
+        controller: 'MainCtrl',
+        resolve: {
+          postPromise: ['souls', function(souls){
+            return souls.getAll();
+          }]
+        }
+      })
+
+      .state('soul', {
+        url:'/soul/{id}',
+        templateUrl: '/soul.ejs',
+        controller: 'SoulsCtrl',
+        resolve: {
+          soul: ['$stateParams', 'souls', function($stateParams, souls) {
+            return souls.get($stateParams.id);
+          }]
+        }
+      });
+
+     $urlRouterProvider.otherwise('members');
   }]);
-
-app.controller('FormCtrl', function($scope) {
-
-  //function to submit the form after all validation has occurred
-  $scope.submitForm = function(isValid) {
-
-    // check to make sure the form is completely valid
-    if (isValid) {
-      alert('Form is valid');
-    }
-  };
-});
 
 app.controller('MainCtrl', [
   '$scope',
-  'posts',
-  function($scope, posts){
-    $scope.posts = posts.posts;
+  'souls',
+  '$stateParams',
+  function($scope, souls){
+    $scope.souls = souls.souls;
 
-    $scope.addPost = function(){
-      if(!$scope.title || $scope.title === '') {return;}
-      $scope.posts.push({
-        title: $scope.title,
-        link: $scope.link,
-        upvotes: 0
+    $scope.addSoul = function(){
+      if(!$scope.fullname || $scope.fullname === '') { return; }
+      souls.create({
+        fullname: $scope.fullname,
+        street: $scope.street,
+        city: $scope.city,
+        state: $scope.state,
+        zip: $scope.zip,
+        dateContacted: $scope.dateContacted,
+        lessonNumber: $scope.lessonNumber,
+        dateSent: $scope.dateSent,
+        dateReceived: $scope.dateReceived
       });
-      $scope.title = '';
-      $scope.link = '';
-
-    };
-
-    $scope.incrementUpvotes = function(post) {
-      post.upvotes += 1;
+      $scope.fullname = '';
+      $scope.street = '';
+      $scope.city = '';
+      $scope.state = '';
+      $scope.zip = '';
+      $scope.dateContacted = '';
+      $scope.lessonNumber = '';
+      $scope.dateSent = '';
+      $scope.dateReceived = '';
     };
   }]);
 
-  app.controller('PostsCtrl', [
+  app.controller('SoulsCtrl', [
     '$scope',
-    '$stateParams',
-    'posts',
+    'souls',
+    'soul',
+    function($scope, souls, soul){
 
-    function($scope, $stateParams, posts){
-      $scope.post = posts.posts[$stateParams.id];
-      $scope.post.comments = [];
-
-      $scope.addComment = function(){
-        if($scope.body === '') {return;}
-        $scope.post.comments.push({
-          body: $scope.body,
-          author: 'user',
-          upvotes: 0
-        });
-        $scope.body = '';
-      };
-      $scope.incrementUpvotes = function(comment) {
-        comment.upvotes += 1;
-      };
+      $scope.soul = soul;
     }]);

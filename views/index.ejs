@@ -20,227 +20,188 @@
 </head>
 
 <body ng-app="plantr">
-        <header class="masthead">
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-12">
-                        <div class="pull-right">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><h3><i class="glyphicon glyphicon-cog"></i></h3></a>
-                            <ul class="dropdown-menu">
-                                <li style="width: 250px;">
-                                    <form class="navbar-form form" role="form">
-                                        <div class="form-group">
-                                            <div class="input-group">
-                                                <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-                                                <input id="emailInput" placeholder="email address" class="form-control" type="email" oninvalid="setCustomValidity('Please enter a valid email address!')" onchange="try{setCustomValaidity('')}catch(e){}" required="">
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <div class="input-group">
-                                                <span class="input-group-addon"><i class="glyphicon glyphicon-lock color-blue"></i></span>
-                                                <input id="passwordInput" placeholder="password" class="form-control" type="password" oninvalid="setCustomValidity('Please enter a password!')" onchange="try{setCustomValidty('')}catch(e){}" required="">
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <button type="submit" class="btn btn-default form-control">Login</button>
-                                        </div>
-                                    </form>
-                                </li>
-                            </ul> <!-- End dropdown-menu -->
-                        </div><!-- End pull-right -->
-                    </div><!-- End of col-sm-6 -->
-                </div><!-- End of row -->
-            </div><!-- End of container -->
-        </header><!-- End of header -->
+   <header class="masthead">
+       <div class="container">
+           <div class="row">
+               <div class="col-sm-12">
+                   <div class="pull-right">
+                       <a href="#" class="dropdown-toggle" data-toggle="dropdown"><h3><i class="glyphicon glyphicon-cog"></i></h3></a>
+                       <ul class="dropdown-menu">
+                           <li style="width: 250px; padding-left: 20px; padding-right: 20px;">
+                               <form class="navbar-form form" role="form">
+                                   <div class="form-group">
+                                       <div class="input-group">
+                                           <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+                                           <input id="emailInput" placeholder="email address" class="form-control" type="email" oninvalid="setCustomValidity('Please enter a valid email address!')" onchange="try{setCustomValaidity('')}catch(e){}" required="">
+                                       </div>
+                                   </div>
+                                   <div class="form-group">
+                                       <div class="input-group">
+                                           <span class="input-group-addon"><i class="glyphicon glyphicon-lock color-blue"></i></span>
+                                           <input id="passwordInput" placeholder="password" class="form-control" type="password" oninvalid="setCustomValidity('Please enter a password!')" onchange="try{setCustomValidty('')}catch(e){}" required="">
+                                       </div>
+                                   </div>
+                                   <div class="form-group">
+                                       <button type="submit" class="btn btn-default form-control">Login</button>
+                                   </div>
+                               </form>
+                           </li>
+                       </ul> <!-- End dropdown-menu -->
+                   </div><!-- End pull-right -->
+               </div><!-- End of col-sm-6 -->
+           </div><!-- End of row -->
+       </div><!-- End of container -->
+   </header><!-- End of header -->
 
-        <!-- Fixed navbar -->
-        <div class="navbar navbar-custom navbar-inverse navbar-static-top" id="nav">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                </div>
-                <div class="collapse navbar-collapse">
-                    <ul class="nav navbar-nav nav-justified">
-                        <li><a href="#/home">Home</a></li>
-                        <li><a href="#">Schedule</a></li>
-                        <li><a href="#">Statistics</a></li>
-                        <li><a href="#">Courses</a></li>
-                        <li class="dropdown">
-                            <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">Souls <b class="caret"></b></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="/addSoul">Add a Soul</a></li>
-                                <li><a href="#">Find a Soul</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div><!-- /.nav-collapse -->
-            </div><!-- /.container -->
-        </div><!-- /.navbar -->
+   <!-- Fixed navbar
+   <div class="navbar navbar-custom navbar-inverse navbar-static-top" id="nav">
+       <div class="container">
+           <div class="navbar-header">
+               <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                   <span class="icon-bar"></span>
+                   <span class="icon-bar"></span>
+                   <span class="icon-bar"></span>
+               </button>
+           </div>
+           <div class="collapse navbar-collapse">
+               <ul class="nav navbar-nav nav-justified">
+                   <li><a href="#/home">Home</a></li>
+                   <li><a href="#">Schedule</a></li>
+                   <li><a href="#">Statistics</a></li>
+                   <li><a href="#">Courses</a></li>
+                   <li class="dropdown">
+                       <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">Souls <b class="caret"></b></a>
+                       <ul class="dropdown-menu">
+                           <li><a href="/addSoul">Add a Soul</a></li>
+                           <li><a href="/souls">Find a Soul</a></li>
+                       </ul>
+                   </li>
+               </ul>
+           </div>
+       </div>
+   </div><!-- /.navbar -->
 
-        <ui-view></ui-view><!-- Render Main View -->
-        <script src="/javascripts/navbar.js"></script>
-  <!-- Footer -->
 
-  <!-- End of Footer -->
+   <script src="/javascripts/navbar.js"></script><!-- Nav move and Scroll to Top -->
 
-    <!-- Home Template -->
-    <script type="text/ng-template" id="/home.html">
-        <div class="introBox-bg">
-            <div class="container-fluid">
-                <div class="row" style="min-height: 400px;">
-                    <div class="col-xs-12 col-md-8 col-md-offset-2">
-                        <p style="font-family: 'Righteous', cursive; font-size: 40pt; text-align: center; padding-top: 30px;"><strong>
-                            <span style="color:#ff6050; font-size: 70pt;">Go</span> into all the world and <span style="color:#ff6050; font-size: 70pt;">preach </span>the gospel to all creation</strong>
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div style="height: 15px;"></div>
-        <div class="container">
-            <div class="row" style="min-height: 400px;">
-                <div class="col-md-3 col-sm-6">
-                    <div class="serviceBox">
-                        <div class="service-icon">
-                            <span class="glyphicon glyphicon-road" style="color: green;"></span>
-                        </div>
-                        <div class="service-content">
-                            <h3 style="font-family: 'Viga', sans-serif;">
-                                Go
-                            </h3>
-                            <p style="font-family:'Ubuntu', sans-serif; font-size: 14pt;">
-                                We cannot truly spread the Gospel if we never leave the building.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6">
-                    <div class="serviceBox">
-                        <div class="service-icon">
-                            <span class="glyphicon glyphicon-globe" style="color: green;"></span>
-                        </div>
-                        <div class="service-content">
-                            <h3 style="font-family: 'Viga', sans-serif;">
-                                Reach
-                            </h3>
-                            <p style="font-family:'Ubuntu', sans-serif; font-size: 14pt;">
-                                With love and kindness, find souls who need saving.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6">
-                    <div class="serviceBox">
-                        <div class="service-icon">
-                            <i class="fa fa-book" aria-hidden="true" style="color: green; font-size: 30px;"></i>
-                        </div>
-                        <div class="service-content">
-                            <h3 style="font-family: 'Viga', sans-serif;">
-                                Teach
-                            </h3>
-                            <p style="font-family:'Ubuntu', sans-serif; font-size: 14pt;">
-                                God wants everyone in Heaven, but some have never heard the Gospel.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6">
-                    <div class="serviceBox">
-                        <div class="service-icon">
-                            <span class="glyphicon glyphicon-leaf" style="color: green;"></span>
-                        </div>
-                        <div class="service-content">
-                            <h3 style="font-family: 'Viga', sans-serif;">
-                                Grow
-                            </h3>
-                            <p style="font-family:'Ubuntu', sans-serif; font-size: 14pt;">
-                                Take care of your members and guests and see numbers you never expected.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="detailBox-bg">
-            <div class="container-fluid">
-                <div class="row" style="min-height: 300px;">
-                    <div class="col-xs-12 col-md-8 col-md-offset-2">
-                        <p style="font-family: 'Righteous', cursive; font-size: 55pt; text-align: center; padding-top: 100px; color: #383e40;"><strong>
-                            Evangelism<br /> in the 21st Century
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="footer" style="background-color: #2b3a42;">
-            <div class="container">
-                <div class="row" style="min-height: 300px;">
-                    <div class="col-xs-12 col-md-6 col-md-offset-1">
-                        <p style="padding-top: 60px; font-family:'Ubuntu', sans-serif; font-size: 18px; text-align: center; line-height: 1.6em; color: white; letter-spacing: .075em;">
-                            God's message should never be changed, but that doesn't mean we shouldn't take advantage of the modern tools available today in order to spread God's
-                            Kingdom. Plantr provides a modern approach for churches wishing to track mailer correspondence courses and contact information of visitors
-                            that ensure your leaders can keep up with the rapid growth at your congregation.
-                        </p>
-                    </div>
-                    <div class="col-xs-12 col-md-4">
-                        <p style="padding-top: 100px; font-family: 'Ubuntu', sans-serif; font-size: 20px; text-align: center; line-height: 1.6em; color:white;">
-                            Keep up with our latest news as well as updates from our home congregation<br><br><a href="facebook.com/augustaroadcoc"><i class="fa fa-facebook-official" style="color: white; padding-right: 10px;" aria-hidden="true"></i></a>
-                            <a href="#"><i class="fa fa-twitter-square" style="color: white; padding-left: 10px;" aria-hidden="true"></i></a>
-                        </p>
-                    </div>
-                </div>
-                <div class="row" style="height: 50px;">
-                    <p style="color: white; text-align: center;"><i class="fa fa-copyright" aria-hidden="true"></i> 2016 PLANTR | ALL RIGHTS RESERVED.</p>
-                </div>
-            </div>
-        </div>
-        <ul class="nav pull-right scroll-top">
-            <li><a href="#" title="Scroll to top"><i class="glyphicon glyphicon-chevron-up"></i></a></li>
-        </ul>
-        <!-- Smooth Scroll for scroll to top -->
-        <script>
-        $('.scroll-top').click(function(){
-          $('body,html').animate({scrollTop:0},1000);
-        })
-        </script>
-    </script>
-    <!-- End of Home Template -->
-
-    <!-- Posts Template -->
-    <script type="text/ng-template" id="/posts.html">
-        <div class="page-header">
-            <h3>
-       <a ng-show="post.link" href="{{post.link}}">
-         {{post.title}}
-       </a>
-       <span ng-hide="post.link">
-         {{post.title}}
-       </span>
-     </h3>
-        </div>
-
-        <div ng-repeat="comment in post.comments | orderBy: '-upvotes'">
-            <span class="glyphicon glyphicon-thumbs-up" ng-click="incrementUpvotes(comment)"></span> {{comment.upvotes}} - by {{comment.author}}
-            <span style="font-size:20px; margin-left:10px;">
-       {{comment.body}}
-     </span>
-        </div>
-
-        <form ng-submit="addComment()" style="margin-top:30px;">
-            <h3>Add a new comment</h3>
-
-            <div class="form-group">
-                <input type="text" class="form-control" placeholder="Comment" ng-model="body">
-                </input>
-            </div>
-            <button type="submit" class="btn btn-primary">Add Comment</button>
-        </form>
-    </script>
-    <!-- End of Posts Template -->
+   <div class="introBox-bg">
+       <div class="container-fluid">
+           <div class="row" style="min-height: 400px;">
+               <div class="col-xs-12 col-md-8 col-md-offset-2">
+                   <p style="font-family: 'Righteous', cursive; font-size: 40pt; text-align: center; padding-top: 30px;"><strong>
+                       <span style="color:#ff6050; font-size: 70pt;">Go</span> into all the world and <span style="color:#ff6050; font-size: 70pt;">preach </span>the gospel to all creation</strong>
+                   </p>
+               </div>
+           </div>
+       </div>
+   </div>
+   <div style="height: 15px;"></div>
+   <div class="container">
+       <div class="row" style="min-height: 400px;">
+           <div class="col-md-3 col-sm-6">
+               <div class="serviceBox">
+                   <div class="service-icon">
+                       <span class="glyphicon glyphicon-road" style="color: green;"></span>
+                   </div>
+                   <div class="service-content">
+                       <h3 style="font-family: 'Viga', sans-serif;">
+                           Go
+                       </h3>
+                       <p style="font-family:'Ubuntu', sans-serif; font-size: 14pt;">
+                           We cannot truly spread the Gospel if we never leave the building.
+                       </p>
+                   </div>
+               </div>
+           </div>
+           <div class="col-md-3 col-sm-6">
+               <div class="serviceBox">
+                   <div class="service-icon">
+                       <span class="glyphicon glyphicon-globe" style="color: green;"></span>
+                   </div>
+                   <div class="service-content">
+                       <h3 style="font-family: 'Viga', sans-serif;">
+                           Reach
+                       </h3>
+                       <p style="font-family:'Ubuntu', sans-serif; font-size: 14pt;">
+                           With love and kindness, find souls who need saving.
+                       </p>
+                   </div>
+               </div>
+           </div>
+           <div class="col-md-3 col-sm-6">
+               <div class="serviceBox">
+                   <div class="service-icon">
+                       <i class="fa fa-book" aria-hidden="true" style="color: green; font-size: 30px;"></i>
+                   </div>
+                   <div class="service-content">
+                       <h3 style="font-family: 'Viga', sans-serif;">
+                           Teach
+                       </h3>
+                       <p style="font-family:'Ubuntu', sans-serif; font-size: 14pt;">
+                           God wants everyone in Heaven, but some have never heard the Gospel.
+                       </p>
+                   </div>
+               </div>
+           </div>
+           <div class="col-md-3 col-sm-6">
+               <div class="serviceBox">
+                   <div class="service-icon">
+                       <span class="glyphicon glyphicon-leaf" style="color: green;"></span>
+                   </div>
+                   <div class="service-content">
+                       <h3 style="font-family: 'Viga', sans-serif;">
+                           Grow
+                       </h3>
+                       <p style="font-family:'Ubuntu', sans-serif; font-size: 14pt;">
+                           Take care of your members and guests and see numbers you never expected.
+                       </p>
+                   </div>
+               </div>
+           </div>
+       </div>
+   </div>
+   <div class="detailBox-bg">
+       <div class="container-fluid">
+           <div class="row" style="min-height: 300px;">
+               <div class="col-xs-12 col-md-8 col-md-offset-2">
+                   <p style="font-family: 'Righteous', cursive; font-size: 55pt; text-align: center; padding-top: 100px; color: #383e40;"><strong>
+                       Evangelism<br /> in the 21st Century
+                   </p>
+               </div>
+           </div>
+       </div>
+   </div>
+   <div class="footer" style="background-color: #2b3a42;">
+       <div class="container">
+           <div class="row" style="min-height: 300px;">
+               <div class="col-xs-12 col-md-6 col-md-offset-1">
+                   <p style="padding-top: 60px; font-family:'Ubuntu', sans-serif; font-size: 18px; text-align: center; line-height: 1.6em; color: white; letter-spacing: .075em;">
+                       God's message should never be changed, but that doesn't mean we shouldn't take advantage of the modern tools available today in order to spread God's
+                       Kingdom. Plantr provides a modern approach for churches wishing to track mailer correspondence courses and contact information of visitors
+                       that ensure your leaders can keep up with the rapid growth at your congregation.
+                   </p>
+               </div>
+               <div class="col-xs-12 col-md-4">
+                   <p style="padding-top: 100px; font-family: 'Ubuntu', sans-serif; font-size: 20px; text-align: center; line-height: 1.6em; color:white;">
+                       Keep up with our latest news as well as updates from our home congregation<br><br><a href="facebook.com/augustaroadcoc"><i class="fa fa-facebook-official" style="color: white; padding-right: 10px;" aria-hidden="true"></i></a>
+                       <a href="#"><i class="fa fa-twitter-square" style="color: white; padding-left: 10px;" aria-hidden="true"></i></a>
+                   </p>
+               </div>
+           </div>
+           <div class="row" style="height: 50px;">
+               <p style="color: white; text-align: center;"><i class="fa fa-copyright" aria-hidden="true"></i> 2016 PLANTR | ALL RIGHTS RESERVED.</p>
+           </div>
+       </div>
+   </div>
+   <ul class="nav pull-right scroll-top">
+       <li><a href="#" title="Scroll to top"><i class="glyphicon glyphicon-chevron-up"></i></a></li>
+   </ul>
+   <!-- Smooth Scroll for scroll to top -->
+   <script>
+   $('.scroll-top').click(function(){
+     $('body,html').animate({scrollTop:0},1000);
+     })
+   </script>
 
 </body>
 

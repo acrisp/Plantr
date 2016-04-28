@@ -1,17 +1,15 @@
 var mongoose = require('mongoose');
 
 var SoulSchema = new mongoose.Schema({
-  fname: String,
-  lname: String,
+  fullname: String,
   street: String,
   city: String,
   state: String,
-  zip: Number,
-  contacted: Date,
-  lesson: Number,
-  sent: Date,
-  received: Date,
-  comments: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Comment' }]
+  zip: String,
+  dateContacted: { type: Date, default: Date.now },
+  lessonNumber: { type: Number, min: 1, max: 8 },
+  dateSent: { type: Date, default: Date.now },
+  dateReceived: Date,
 });
 
 mongoose.model('Soul', SoulSchema);

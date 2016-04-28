@@ -13,7 +13,7 @@
 
    <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
-<body ng-app="plantr" ng-controller="FormCtrl">
+<body ng-app="plantr" ng-controller="MainCtrl">
   <header class="small_header">
 
   </header><!-- End of header -->
@@ -36,7 +36,7 @@
                       <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">Souls <b class="caret"></b></a>
                       <ul class="dropdown-menu">
                           <li><a href="/addSoul">Add a Soul</a></li>
-                          <li><a href="#">Find a Soul</a></li>
+                          <li><a href="/souls">Find a Soul</a></li>
                       </ul>
                   </li>
               </ul>
@@ -51,27 +51,20 @@
                    Add a Soul <i class="fa fa-leaf" style="color: green;" aria-hidden="true"></i>
                </h1>
            </div>
-           <form name="soulForm" ng-submit="submitForm(soulForm.$valid)" novalidate> <!-- novalidate prevents HTML5 validation since we will be validating ourselves -->
+           <form name="soulForm" ng-submit="submitForm(soulForm.$valid); addSoul()" novalidate> <!-- novalidate prevents HTML5 validation since we will be validating ourselves -->
                <div class="row">
-                   <h3 style="font-family: 'Ubuntu', sans-serif; padding-left: 50px;">Name</h3>
+                   <h3 style="font-family: 'Ubuntu', sans-serif; padding-left: 50px;"><i class="fa fa-user" aria-hidden="true" style="padding-right: 25px;"></i> Name</h3>
                    <div class="col-md-5 col-sm-5 col-xs-10 col-xs-offset-1 col-sm-offset-1 col-md-offset-1">
-                       <!-- FIRST NAME -->
-                       <div class="form-group" ng-class="{ 'has-error' : soulForm.fname.$invalid && !soulForm.fname.$pristine }">
+                       <!-- FULL NAME -->
+                       <div class="form-group" ng-class="{ 'has-error' : soulForm.fullname.$invalid && !soulForm.fullname.$pristine }">
                            <!--<label>First Name</label>-->
-                           <input type="text" name="fname" placeholder="First Name" class="form-control" ng-model="fname" required>
-                           <p ng-show="soulForm.fname.$invalid && !soulForm.fname.$pristine" class="help-block">A first name is required.</p>
-                       </div>
-                   </div>
-                   <div class="col-md-5 col-sm-5 col-xs-10 col-xs-offset-1 col-sm-offset-1 col-md-offset-1">
-                       <!-- LAST NAME -->
-                       <div class="form-group" ng-class="{ 'has-error' : soulForm.lname.$invalid && !soulForm.lname.$pristine }">
-                           <input type="text" name="lname" placeholder="Last Name" class="form-control" ng-model="lname" required>
-                           <p ng-show="soulForm.lname.$invalid && !soulForm.lname.$pristine" class="help-block">A last name is required.</p>
+                           <input type="text" name="fullname" placeholder="Name" class="form-control" ng-model="fullname" required>
+                           <p ng-show="soulForm.fullname.$invalid && !soulForm.fullname.$pristine" class="help-block">A name is required.</p>
                        </div>
                    </div>
                </div><!-- End of Row -->
                <div class="row">
-                   <h3 style="font-faimly: 'Ubuntu', sans-serif; padding-left: 50px;">Address</h3>
+                   <h3 style="font-faimly: 'Ubuntu', sans-serif; padding-left: 50px;"><i class="fa fa-home" aria-hidden="true" style="padding-right: 25px;"></i> Address</h3>
                    <div class="col-md-8 col-sm-8 col-xs-10 col-xs-offset-1 col-sm-offset-1 col-md-offset-1">
                        <!-- STREET -->
                        <div class="form-group" ng-class="{ 'has-error' : soulForm.street.$invalid && !soulForm.street.$pristine }">
@@ -159,7 +152,7 @@
                    </div>
                </div> <!-- End of Row -->
                <div class="row">
-                   <h3 style="font-family: 'Ubuntu', sans-serif; padding-left: 50px;">Additional Details</h3>
+                   <h3 style="font-family: 'Ubuntu', sans-serif; padding-left: 50px;"><i class="fa fa-ellipsis-h" aria-hidden="true" style="padding-right: 25px;"></i> Additional Details</h3>
                    <div class="col-md-5 col-sm-5 col-xs-10 col-md-offset-1 col-sm-offset-1 col-xs-offset-1">
                        <!-- DATE CONTACTED -->
                        <div class="form-group">
