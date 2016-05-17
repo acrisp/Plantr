@@ -13,36 +13,29 @@
     <script src="/javascripts/angularApp.js"></script>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Tempates
-     <script type="text/ng-template" id="/home.ejs"></script>
-     <script type="text/ng-template" id="/posts.ejs"></script>
-     -->
 </head>
 
 <body ng-app="plantr">
    <header class="masthead">
-       <div class="container">
+       <div class="container" ng-controller="AuthCtrl">
            <div class="row">
                <div class="col-sm-12">
                    <div class="pull-right">
                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><h3><i class="glyphicon glyphicon-cog"></i></h3></a>
                        <ul class="dropdown-menu">
                            <li style="width: 250px; padding-left: 20px; padding-right: 20px;">
-                               <form class="navbar-form form" role="form">
+                               <form class="navbar-form form" ng-submit="logIn()">
                                    <div class="form-group">
-                                       <div class="input-group">
-                                           <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-                                           <input id="emailInput" placeholder="email address" class="form-control" type="email" oninvalid="setCustomValidity('Please enter a valid email address!')" onchange="try{setCustomValaidity('')}catch(e){}" required="">
-                                       </div>
+                                       <input type="text" placeholder="email address"  ng-model="user.username" class="form-control">
                                    </div>
                                    <div class="form-group">
-                                       <div class="input-group">
-                                           <span class="input-group-addon"><i class="glyphicon glyphicon-lock color-blue"></i></span>
-                                           <input id="passwordInput" placeholder="password" class="form-control" type="password" oninvalid="setCustomValidity('Please enter a password!')" onchange="try{setCustomValidty('')}catch(e){}" required="">
-                                       </div>
+                                       <input type="password" placeholder="password" ng-model="user.password" class="form-control">
                                    </div>
                                    <div class="form-group">
-                                       <button type="submit" class="btn btn-default form-control">Login</button>
+                                       <button type="submit" class="btn btn-primary">Login</button>
+                                   </div>
+                                   <div ng-show="error" class="alert alert-danger row">
+                                       <span>{{ error.message }}</span>
                                    </div>
                                </form>
                            </li>
