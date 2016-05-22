@@ -1,0 +1,50 @@
+<html>
+
+<head>
+    <title>Plantr</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/stylesheets/style.css" rel="stylesheet">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.18/angular-ui-router.js"></script>
+    <script src="/javascripts/angularApp.js"></script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body ng-app="plantr" ng-controller="AuthCtrl">
+   <header class="small_header">
+       <a href="/"><img src="../images/logo_small.png" /></a>
+   </header><!-- End of header -->
+   <div class="container">
+       <div class="col-md-10 col-md-offset-1">
+           <div ng-show="error" class="alert alert-danger row">
+               <span>{{ error.message }}</span>
+           </div>
+
+           <form ng-submit="logIn()" style="margin-top: 30px;">
+               <div class="col-md-2 col-md-offset-5">
+                   <h3 style="padding-left: 30px;"> Log In</h3>
+               </div>
+               <div class="row">
+                   <div class="form-group col-md-6 col-md-offset-3">
+                       <input type="text" class="form-control" placeholder="Username" ng-model="user.username"></input>
+                   </div>
+               </div>
+               <div class="row">
+                   <div class="form-group col-md-6 col-md-offset-3">
+                       <input type="password" class="form-control" placeholder="Password" ng-model="user.password"></input>
+                   </div>
+               </div>
+               <div class="row">
+                   <div class="col-md-2 col-md-offset-8">
+                       <button type="submit" class="btn btn-primary">Log In</button>
+                   </div>
+               </div>
+           </form>
+       </div>
+   </div>
+</body>
+</html>

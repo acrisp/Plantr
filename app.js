@@ -48,7 +48,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 // ======================================================================
 // include templates directory ==========================================
 // ======================================================================
-app.use(express.static(path.join(__dirname, './views/templates')));
+app.use(express.static(path.join(__dirname, 'views')));
 
 // ======================================================================
 // include bower directory ==============================================

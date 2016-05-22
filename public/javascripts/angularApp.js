@@ -6,21 +6,37 @@ angular.module('plantr', ['ui.router'])
    function($stateProvider, $urlRouterProvider){
 
    $stateProvider
+       .state('home', {
+         url: '/',
+         templateUrl: '/templates/index_template.ejs',
+         controller: 'AuthCtrl'
+       })
+
        .state('members', {
            url: '/members',
-           templateUrl: '/members.html',
-           controller: 'MainCtrl'
+           templateUrl: '/templates/members.ejs',
+           controller: 'MainCtrl',
+           onEnter: ['$state', 'auth', function($state, auth){
+             if(!auth.isLoggedIn()){
+               $state.go('home');
+             }
+           }]
        })
 
        .state('addSoul', {
            url: '/addSoul',
-           templateUrl: '/addSoul.ejs',
-           controller: 'MainCtrl'
+           templateUrl: '/templates/addSoul.ejs',
+           controller: 'MainCtrl',
+           onEnter: ['$state', 'auth', function($state, auth){
+             if(!auth.isLoggedIn()){
+               $state.go('home');
+             }
+           }]
        })
 
        .state('soulList', {
            url: '/soulList',
-           templateUrl: '/soulList.ejs',
+           templateUrl: '/templates/soulList.ejs',
            controller: 'MainCtrl',
            resolve: {
                postPromise: ['souls', function(souls){
@@ -40,7 +56,7 @@ angular.module('plantr', ['ui.router'])
            }
        });
 
-       $urlRouterProvider.otherwise('members');
+       $urlRouterProvider.otherwise('/');
    }
 ])
 
@@ -91,16 +107,16 @@ angular.module('plantr', ['ui.router'])
 // Auth controller
 .controller('AuthCtrl', [
    '$scope',
+   '$state',
    'auth',
-   '$window',
-   function($scope, auth, $window){
+   function($scope, $state, auth){
        $scope.user = {};
 
        $scope.register = function(){
            auth.register($scope.user).error(function(error){
                $scope.error = error;
            }).then(function(){
-               $window.location.href = '/';
+               $state.go('home');
            });
        };
 
@@ -108,19 +124,30 @@ angular.module('plantr', ['ui.router'])
            auth.logIn($scope.user).error(function(error){
                $scope.error = error;
            }).then(function(){
-             $window.location.href = 'api/members';
+               $state.go('members');
            });
        };
     }])
 
+.controller('NavCtrl', [
+  '$scope',
+  'auth',
+  function($scope, auth){
+    $scope.isLoggedIn = auth.isLoggedIn;
+    $scope.currentUser = auth.currentUser;
+    $scope.logOut = auth.logOut;
+  }])
+
 // Souls Factory
-.factory('souls', ['$http', function($http){
+.factory('souls', ['$http', 'auth', function($http, auth){
    var o = {
        souls: []
    };
 
    o.getAll = function() {
-       return $http.get('/soulList').success(function(data){
+       return $http.get('/soulList', {
+         headers: {Authorization: 'Bearer '+auth.getToken()}
+       }).success(function(data){
            angular.copy(data, o.souls);
        });
    };
@@ -141,15 +168,16 @@ angular.module('plantr', ['ui.router'])
    return o;
 }])
 
+// Authorization Factory
 .factory('auth', ['$http', '$window', function($http, $window){
    var auth = {};
 
    auth.saveToken = function(token){
-       $window.localStorage['plantr-token'] = token;
+       $window.localStorage.token = token;
    };
 
    auth.getToken = function(){
-       return $window.localStorage['plantr-token'];
+       return $window.localStorage.token;
    };
 
    auth.isLoggedIn = function(){
@@ -179,7 +207,7 @@ angular.module('plantr', ['ui.router'])
   };
 
   auth.logIn = function(user){
-    return $http.post('api/authenticate', user).success(function(data){
+    return $http.post('/authenticate', user).success(function(data){
       auth.saveToken(data.token);
     });
   };
