@@ -64,10 +64,12 @@ angular.module('plantr', ['ui.router'])
 .controller('MainCtrl', [
    '$scope',
    'souls',
+   'auth',
    '$stateParams',
-   function($scope, souls){
+   function($scope, souls, auth){
 
        $scope.souls = souls.souls;
+       $scope.currentUser = auth.currentUser;
 
        $scope.addSoul = function(){
            if(!$scope.fullname || $scope.fullname === '') { return; }
