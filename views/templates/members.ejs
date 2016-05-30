@@ -1,21 +1,40 @@
-<header class="small_header">
-   <a href="#/members"><img src="images/logo_small.png" /></a>
+<div class="small_header">
+   <a href="members"><img src="images/logo_small.png" style="max-width: 100%; height: auto;"/></a>
 </header>
 <div class="container">
-    <div class="row" style="padding-bottom: 80px;">
-        <div class="col-md-10 col-md-offset-1 text-center">
-            <p style="font-family: 'Ubuntu', sans-serif; font-size: 3em; padding-top: 40px;">Welcome Back, {{ currentUser() }}</p>
-        </div>
-    </div><!-- End of Row -->
+  <div class="row">
+      <div class="col-sm-12">
+          <div class="pull-right">
+              <a class="dropdown-toggle" data-toggle="dropdown"><h3><i class="fa fa-cog" aria-hidden="true" style="cursor: pointer;"></i></h3></a>
+              <ul class="dropdown-menu">
+                  <li style="width: 150px;">
+                      <div ng-controller="NavCtrl">
+                          <ul class="memberNav">
+                              <li ng-show="isLoggedIn()"><a><span class="glyphicon glyphicon-user" style="padding-right: 13px;" aria-hidden="true"></span>{{ currentUser() }}</a></li>
+                              <li ng-show="isLoggedIn()"><a href="" ng-click="logOut()"><span class="glyphicon glyphicon-log-out" style="padding-right: 10px;" aria-hidden="true"></span> Log Out </a></li>
+                          </ul>
+                      </div>
+                  </li>
+              </ul><!-- End dropdown-menu -->
+          </div><!-- End pull-right -->
+      </div><!-- End of col-sm-6 -->
+  </div><!-- End of row -->
+</div>
+<div class="container" ng-controller="MainCtrl">
+   <div class="row" style="padding-bottom: 80px;">
+       <div class="col-md-10 col-md-offset-1 text-center">
+           <p style="font-family: 'Ubuntu', sans-serif; font-size: 3em; padding-top: 40px;">Welcome Back, {{ currentUser() }}</p>
+       </div>
+   </div><!-- End of Row -->
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
             <div class="col-md-4">
-                <a class="memberMenu animated fadeInUp hvr-float-shadow" style="color: white; text-decoration: none;" href="#/soulList"><span class="glyphicon glyphicon-search" style="text-align: center; line-height: 90px;"</span></a>
-                <p class="text-center" style="padding-top: 20px; font-family: 'Ubuntu', sans-serif; font-size: 18pt;">Find a Soul</p>
+                <a class="memberMenu animated fadeInUp hvr-float-shadow" style="color: white; text-decoration: none;" href="soulList"><span class="fa fa-users" style="text-align: center; line-height: 90px;"</span></a>
+                <p class="text-center" style="padding-top: 20px; font-family: 'Ubuntu', sans-serif; font-size: 18pt;">Directory</p>
             </div>
             <div class="col-md-4">
-                <a class="memberMenu animated fadeInUp hvr-float-shadow" style="color: white; text-decoration: none;" href="#/addSoul"><span class="fa fa-user-plus" style="text-align: center; line-height: 90px;"</span></a>
-                <p class="text-center" style="padding-top: 20px; font-family: 'Ubuntu', sans-serif; font-size: 18pt;">Add a Soul</p>
+                <a class="memberMenu animated fadeInUp hvr-float-shadow" style="color: white; text-decoration: none;" href="addSoul"><span class="fa fa-user-plus" style="text-align: center; line-height: 90px;"</span></a>
+                <p class="text-center" style="padding-top: 20px; font-family: 'Ubuntu', sans-serif; font-size: 18pt;">Out-Reach</p>
             </div>
             <div class="col-md-4">
                 <a class="memberMenu animated fadeInUp hvr-float-shadow" style="color: white; text-decoration: none;" href="#"><span class="fa fa-calendar" style="text-align: center; line-height: 90px;"</span></a>
